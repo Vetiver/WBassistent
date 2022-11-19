@@ -8,7 +8,7 @@ function SpecialOffers() {
       <h2 className={styles.header}>Наши акции</h2>
       <div className={styles.cardsContainer}>
         {specialOffersData.map((el) => {
-          return <SpecialOfferCards data={el} key={el.index}/>;
+          return <SpecialOfferCards key={el.index} data={el}/>;
         })}
       </div>
     </div>

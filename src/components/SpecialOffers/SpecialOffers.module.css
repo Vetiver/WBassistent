@@ -1,4 +1,6 @@
 .header {
+  padding: 100px 0 50px 50px;
+  margin: 0;
   font-style: normal;
   font-weight: 700;
   font-size: 40px;
@@ -8,5 +10,5 @@
  
 .cardsContainer {
   display: flex;
-  gap: 70px
+  justify-content: space-between;
 }
