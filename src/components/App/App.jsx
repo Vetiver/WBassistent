@@ -9,6 +9,7 @@ import {
 
 } from "react-router-dom";
 import Modal from '../Modal/Modal.jsx';
+import SpecialOffers from '../SpecialOffers/SpecialOffers';
 function App() {
   const dispanch = useDispatch()
   const IsOpen = useSelector((state) => state.mainReduser.IsOpen)
@@ -16,6 +17,10 @@ function App() {
   return (
     <div className={`${Style.App}`}>
       <AppHeader />
+      <main className={Style.main}>
+        <SpecialOffers/>
+      </main>
+      
       {IsOpen && (
       <Modal/>
       )
