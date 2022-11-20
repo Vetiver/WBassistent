@@ -1,54 +1,147 @@
-import React from "react";
-import ReactDOM from "react-dom";
 import Style from "../Modal/Modal.module.css";
-import { useDispatch, useSelector } from "react-redux";
-const modalRoot = document.getElementById("modal-root");
 
 function Modal() {
-  const dispatch = useDispatch();
-  return ReactDOM.createPortal(
+  return (
     <div className={`${Style.modal}`}>
-      <div className={`${Style.group}`}>
-        <h3 className={`${Style.title}`}>Управление товарами</h3>
-        <p className={`${Style.chapter}`}>Изменить данные одного товара</p>
-        <p className={`${Style.chapter}`}>Контроль работы с карточкой</p>
-        <p className={`${Style.chapter}`}>Выгрузить все данные товаров</p>
+      <div>
+        <div className={`${Style.group}`}>
+          <p className={`${Style.title}`}>Управление товарами</p>
+          <ul className={`${Style.list}`}>
+            <li className={`${Style.listItem}`}>
+              <a className={`${Style.link}`} href="/#">
+                Изменить данные одного товара
+              </a>
+            </li>
+            <li className={`${Style.listItem}`}>
+              <a className={`${Style.link}`} href="/#">
+                Контроль работы с карточкой
+              </a>
+            </li>
+            <li className={`${Style.listItem}`}>
+              <a className={`${Style.link}`} href="/#">
+                Выгрузить все данные товаров
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div className={`${Style.group}`}>
+          <p className={`${Style.title}`}>Работа с клиентами</p>
+          <ul className={`${Style.list}`}>
+            <li className={`${Style.listItem}`}>
+              <a className={`${Style.link}`} href="/#">
+                Автоответы на отзывы
+              </a>
+            </li>
+            <li className={`${Style.listItem}`}>
+              <a className={`${Style.link}`} href="/#">
+                Работа с вопросами
+              </a>
+            </li>
+            <li className={`${Style.listItem}`}>
+              <a className={`${Style.link}`} href="/#">
+                Контроль возвратов FBS
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
-      <div className={`${Style.group}`}>
-        <h3 className={`${Style.title}`}>Работа с клиентами</h3>
-        <p className={`${Style.chapter}`}>Автоответы на отзывы</p>
-        <p className={`${Style.chapter}`}>Работа с вопросами</p>
-        <p className={`${Style.chapter}`}>Контроль возвратов FBS</p>
+      <div>
+        <div className={`${Style.group}`}>
+          <h3 className={`${Style.title}`}>Любые отчеты</h3>
+          <ul className={`${Style.list}`}>
+            <li className={`${Style.listItem}`}>
+              <a className={`${Style.link}`} href="/#">
+                Получить габариты товаров
+              </a>
+            </li>
+            <li className={`${Style.listItem}`}>
+              <a className={`${Style.link}`} href="/#">
+                Статистика продаж
+              </a>
+            </li>
+            <li className={`${Style.listItem}`}>
+              <a className={`${Style.link}`} href="/#">
+                Выгрузка заказов
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div className={`${Style.group}`}>
+          <h3 className={`${Style.title}`}>Рост продаж</h3>
+          <ul className={`${Style.list}`}>
+            <li className={`${Style.listItem}`}>
+              <a className={`${Style.link}`} href="/#">
+                Все товары без продаж
+              </a>
+            </li>
+            <li className={`${Style.listItem}`}>
+              <a className={`${Style.link}`} href="/#">
+                Рост продаж по артикулу
+              </a>
+            </li>
+            <li className={`${Style.listItem}`}>
+              <a className={`${Style.link}`} href="/#">
+                Сравнить себя с конкурентами
+              </a>
+            </li>
+            <li className={`${Style.listItem}`}>
+              <a className={`${Style.link}`} href="/#">
+                География продаж
+              </a>
+            </li>
+            <li className={`${Style.listItem}`}>
+              <a className={`${Style.link}`} href="/#">
+                Видимость товара
+              </a>
+            </li>
+            <li className={`${Style.listItem}`}>
+              <a className={`${Style.link}`} href="/#">
+                Подбор ключевых слов
+              </a>
+            </li>
+            <li className={`${Style.listItem}`}>
+              <a className={`${Style.link}`} href="/#">
+                Проверка карточки SEO
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
-      <div className={`${Style.group}`}>
-        <h3 className={`${Style.title}`}>Любые отчеты</h3>
-        <p className={`${Style.chapter}`}>Получить габариты товаров</p>
-        <p className={`${Style.chapter}`}>Статистика продаж</p>
-        <p className={`${Style.chapter}`}>Выгрузка заказов</p>
+
+      <div>
+        <div className={`${Style.group}`}>
+          <h3 className={`${Style.title}`}>Работа с поставками</h3>
+          <ul className={`${Style.list}`}>
+            <li className={`${Style.listItem}`}>
+              <a className={`${Style.link}`} href="/#">
+                Поиск поставки по ШК
+              </a>
+            </li>
+            <li className={`${Style.listItem}`}>
+              <a className={`${Style.link}`} href="/#">
+                План поставок (автозаказы)
+              </a>
+            </li>
+            <li className={`${Style.listItem}`}>
+              <a className={`${Style.link}`} href="/#">
+                Контроль остатков
+              </a>
+            </li>
+            <li className={`${Style.listItem}`}>Массовое обсудение остатков</li>
+          </ul>
+        </div>
+        <div className={`${Style.group}`}>
+          <h3 className={`${Style.title}`}>Финансы маркетплейса</h3>
+          <ul className={`${Style.list}`}>
+            <li className={`${Style.listItem}`}>
+              <a className={`${Style.link}`} href="/#">
+                Расшифровка отчета детализации
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
-      <div className={`${Style.group}`}>
-        <h3 className={`${Style.title}`}>Рост продаж</h3>
-        <p className={`${Style.chapter}`}>Все товары без продаж</p>
-        <p className={`${Style.chapter}`}>Рост продаж по артикулу</p>
-        <p className={`${Style.chapter}`}>Сравнить себя с конкурентами</p>
-        <p className={`${Style.chapter}`}>География продаж</p>
-        <p className={`${Style.chapter}`}>Видимость товара</p>
-        <p className={`${Style.chapter}`}>Подбор ключевых слов</p>
-        <p className={`${Style.chapter}`}>Проверка карточки SEO</p>
-      </div>
-      <div className={`${Style.group}`}>
-        <h3 className={`${Style.title}`}>Работа с поставками</h3>
-        <p className={`${Style.chapter}`}>Поиск поставки по ШК</p>
-        <p className={`${Style.chapter}`}>План поставок (автозаказы)</p>
-        <p className={`${Style.chapter}`}>Контроль остатков</p>
-        <p className={`${Style.chapter}`}>Массовое обсудение остатков</p>
-      </div>
-      <div className={`${Style.group}`}>
-        <h3 className={`${Style.title}`}>Финансы маркетплейса</h3>
-        <p className={`${Style.chapter}`}>Расшифровка отчета детализации</p>
-      </div>
-    </div>,
-    modalRoot
+    </div>
   );
 }
 
