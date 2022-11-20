@@ -8,9 +8,8 @@ import Prices from "../Prices/Prices";
 import SearchField from "../SearchField/SearchField";
 
 function App() {
-  const dispanch = useDispatch();
-  const IsOpen = useSelector((state) => state.mainReduser.IsOpen);
-  console.log(IsOpen);
+  const IsOpen = useSelector((state) => state.mainReducer.IsOpen);
+
   return (
     <div className={`${Style.App}`}>
       <AppHeader />

@@ -4,7 +4,9 @@ import MagnifyingGlass from "../../images/logos/magnifying-glass.svg";
 function SearchField() {
   return (
     <div className={styles.container}>
-      <h1 className={styles.header}>Поиск товара по артикулу</h1>
+      <h1 className={styles.header}>
+        Поиск товара <span className={styles.span}>по артикулу</span>
+      </h1>
       <form className={styles.form} action="submit">
         <label className={styles.label} for="search-input">
           <img className={styles.logo} src={MagnifyingGlass} alt="Лупа" />

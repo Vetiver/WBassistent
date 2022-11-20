@@ -1,38 +1,45 @@
 import React from "react";
 import Style from "../AppHeader/AppHeader.module.css";
-import { ReactComponent as QuestionSvg } from "../../../src/Group.svg";
-import { ReactComponent as PersonLogoSvg } from "../../../src/preson1.svg";
-import { useDispatch, useSelector } from "react-redux";
-import {POPUP_IS_OPEN} from '../../services/reducers/mainReduser.jsx';
+import { ReactComponent as ProfileLogo } from "../../images/logos/profile.svg";
+import { ReactComponent as QuestionLogo } from "../../images/logos/question.svg";
+import { useState, useRef } from "react";
+import { useOnHoverOutside } from "../../hooks/useOnHoverOutside";
+import Modal from "../Modal/Modal";
 
-function AppHeader(props) {
-	const isOpen = useSelector((state) => state.mainReduser.IsOpen)
-	const dispanch = useDispatch()
-	function open() {
-		dispanch({
-      type: POPUP_IS_OPEN,
-    })
-		console.log(isOpen)
-	}
+function AppHeader() {
+  const dropdownRef = useRef(null);
+  const [isMenuDropDownOpen, setMenuDropDownOpen] = useState(false);
+
+  const closeHoverMenu = () => {
+    setMenuDropDownOpen(false);
+  };
+
+  useOnHoverOutside(dropdownRef, closeHoverMenu);
   return (
-    <header className={`${Style.header}`}>
-      <div className={`${Style.first}`}>
-        <p className={`${Style.logo}`}>LOGO</p>
-        <button className={`${Style.button}`} onClick={open}>
-          Навигация
-          <span className={`${Style.span}`}>по критериям&#8595;</span>
-        </button>
-      </div>
-      <div className={`${Style.second}`}>
-        <button className={`${Style.button}`}>
-          <span className={`${Style.marcket}`}>Маркет</span>
-        </button>
-        <button className={`${Style.button}`}>
-          <QuestionSvg />
-        </button>
-        <button className={`${Style.button}`}>
-          <PersonLogoSvg />
-        </button>
+    <header className={`${Style.headerContainer}`}>
+      <div className={`${Style.header}`}>
+        <div className={`${Style.first}`} ref={dropdownRef}>
+          <p className={`${Style.logo}`}>LOGO</p>
+          <p
+            className={`${Style.navbar}`}
+            onMouseOver={() => setMenuDropDownOpen(true)}
+          >
+            Навигация
+            <span className={`${Style.span}`}>по критериям &#8595;</span>
+          </p>
+          {isMenuDropDownOpen && <Modal />}
+        </div>
+        <div className={`${Style.second}`}>
+          <a className={`${Style.market}`} href="./#">
+            <span className={`${Style.market}`}>Маркет</span>
+          </a>
+          <a className={`${Style.link}`} href="./#">
+            <QuestionLogo className={`${Style.icon}`} />
+          </a>
+          <a className={`${Style.link}`} href="./#">
+            <ProfileLogo className={`${Style.icon}`} />
+          </a>
+        </div>
       </div>
     </header>
   );

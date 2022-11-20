@@ -1,7 +1,7 @@
 import { pricesData } from "../../services/constants";
 import PriceCard from "../PriceCard/PriceCard";
 import styles from "./Prices.module.css";
-console.log(pricesData)
+
 function Prices() {
   return (
     <div className={styles.container}>

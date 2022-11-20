@@ -1,14 +1,14 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { applyMiddleware, compose, combineReducers } from "redux";
-import {mainReduser} from '../services/reducers/mainReduser.jsx';
+import {mainReducer} from '../services/reducers/mainReducer.jsx';
 
-const reduсers = combineReducers({
-    mainReduser: mainReduser,
+const rootReducer = combineReducers({
+    mainReducer: mainReducer,
   });
 
   const state = {};
 export const store = configureStore({
-  reducer: reduсers,
+  reducer: rootReducer,
   state,
   devTools: true,
 });
