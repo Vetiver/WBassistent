@@ -1,8 +1,8 @@
-import Style from "../Modal/Modal.module.css";
+import Style from "./Menu.module.css";
 
-function Modal() {
+function Menu() {
   return (
-    <div className={`${Style.modal}`}>
+    <div className={Style.container}>
       <div>
         <div className={`${Style.group}`}>
           <p className={`${Style.title}`}>Управление товарами</p>
@@ -145,4 +145,4 @@ function Modal() {
   );
 }
 
-export default Modal;
+export default Menu;
