@@ -1,4 +1,5 @@
 import Footer from "../../components/Footer/Footer";
+import HowToUseSKUSearch from "../../components/HowToUseSKUSearch/HowToUseSKUSearch";
 import Prices from "../../components/Prices/Prices";
 import Questions from "../../components/Questions/Questions";
 import SearchField from "../../components/SearchField/SearchField";
@@ -8,8 +9,7 @@ function Homepage() {
   return (
     <div>
       <SearchField />
-      <SpecialOffers />
-      <Prices />
+      <HowToUseSKUSearch />
       <Questions />
       <Footer />
     </div>

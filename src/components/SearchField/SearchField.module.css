@@ -16,9 +16,9 @@
 }
 
 .span {
-  border-bottom: 2px solid #B82070;
+  border-bottom: 2px solid #b82070;
   padding-bottom: 5px;
-  color: #B82070;
+  color: #b82070;
 }
 
 .form {
@@ -39,13 +39,13 @@
 }
 
 .label {
-  padding: 5px;
+  padding: 4px;
   box-sizing: border-box;
-  border-radius: 20px;
+  border-radius: 23px;
   position: relative;
   display: block;
   width: 100%;
-  background: linear-gradient(90deg, #b82070 30%, #913475 50.02%, #862778 74.48%, #7d256f 100%);
+  background: linear-gradient(90deg, #ec238d 20%, #b82070 30%, #913475 50.02%, #862778 74.48%, #7d256f 100%);
 }
 
 .input {
@@ -62,13 +62,16 @@
   line-height: 30px;
 }
 
-.input:hover {
-  border: 1px solid #000;
+.label:hover {
+  background: #ec238d;
+}
+
+.label:focus {
+  background: #ec238d;
 }
 
 .input:focus {
   outline: none;
-  border: 3px solid #000;
 }
 
 .input::placeholder {
@@ -82,17 +85,19 @@
   display: block;
   border: none;
   border-radius: 16px;
-  background: linear-gradient(90deg, #b82070 10%, #913475 50.02%, #862778 74.48%, #7d256f 100%);
+  background: linear-gradient(90deg, #ec238d 0%, #bc3d96 38.02%, #8d297f 73.96%, #7d256f 100%);
+  background-size: 200% auto;
+  transition: 0.5s;
   color: #fff;
   font-weight: 600;
   font-size: 24px;
   line-height: 30px;
   text-align: center;
-  width: 220px;
+  width: 280px;
   height: 80px;
   cursor: pointer;
 }
 
 .submitButton:hover {
-  opacity: 75%;
+  background-position: bottom right;
 }
