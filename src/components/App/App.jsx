@@ -6,6 +6,15 @@ import Modal from "../Modal/Modal.jsx";
 import SpecialOffers from "../SpecialOffers/SpecialOffers";
 import Prices from "../Prices/Prices";
 import SearchField from "../SearchField/SearchField";
+import Questions from '../Questions/Questions.jsx';
+import Footer from '../Footer/Footer.jsx';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  useLocation,
+  Link,
+} from "react-router-dom";
 
 function App() {
   const IsOpen = useSelector((state) => state.mainReducer.IsOpen);
@@ -14,9 +23,15 @@ function App() {
     <div className={`${Style.App}`}>
       <AppHeader />
       <main className={Style.main}>
-        <SearchField/>
-        <SpecialOffers />
-        <Prices />
+        <Switch>
+        <Route path="/">
+          <SearchField/>
+          <SpecialOffers />
+          <Prices />
+          <Questions/>
+          <Footer/>
+        </Route>
+        </Switch>
       </main>
 
       {IsOpen && <Modal />}
