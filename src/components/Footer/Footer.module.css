@@ -1,20 +1,22 @@
-
 .footer {
   background: rgba(236, 215, 233, 0.25);
 }
 
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+}
+
 .title {
+  padding: 45px 0 15px;
   margin: 0;
-  margin-bottom: 100px;
-  padding-top: 29px;
-  margin-left: 166px;
 }
 
 .infoContainer {
   display: flex;
-  margin-left: 40px;
   gap: 47px;
   padding-bottom: 30px;
+  padding-top: 50px;
 }
 
 .infoWB {
@@ -32,16 +34,23 @@
 .userAgreement {
   margin: 0;
   padding: 0;
-  padding-top: 37px;
-  width: 305px;
+  max-width: 300px;
   font-family: 'Inter';
-  font-style: normal;
   font-weight: 400;
   font-size: 14px;
   line-height: 25px;
   color: #71747A;
   text-align: center;
+}
 
+.link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.link:hover {
+  color: #3e4145;
 }
 
 .icon {

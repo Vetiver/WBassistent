@@ -4,7 +4,8 @@ import { ReactComponent as ProfileLogo } from "../../images/logos/profile.svg";
 import { ReactComponent as QuestionLogo } from "../../images/logos/question.svg";
 import { useState, useRef } from "react";
 import { useOnHoverOutside } from "../../hooks/useOnHoverOutside";
-import Modal from "../Modal/Modal";
+import DropDownMenu from "../DropDownMenu/DropDownMenu";
+import Menu from "../Menu/Menu";
 
 function AppHeader() {
   const dropdownRef = useRef(null);
@@ -27,7 +28,7 @@ function AppHeader() {
             Навигация
             <span className={`${Style.span}`}>по критериям &#8595;</span>
           </p>
-          {isMenuDropDownOpen && <Modal />}
+          {isMenuDropDownOpen && <DropDownMenu />}
         </div>
         <div className={`${Style.second}`}>
           <a className={`${Style.market}`} href="./#">
