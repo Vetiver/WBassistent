@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import Style from "../Questions/Questions.module.css";
-import {data} from '../../utils/questionsData.js';
+import {data} from '../../utils/constants/questionsData.js';
 
 function Questions() {
   const [selected, setSelected] = useState(null);
