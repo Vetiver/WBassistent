@@ -6,6 +6,7 @@ import { ReactComponent as QuestionLogo } from "../../images/logos/question.svg"
 import { useState, useRef } from "react";
 import { useOnHoverOutside } from "../../hooks/useOnHoverOutside";
 import DropDownMenu from "../DropDownMenu/DropDownMenu";
+import {Link} from 'react-router-dom';
 import Menu from "../Menu/Menu";
 
 function AppHeader() {
@@ -21,7 +22,7 @@ function AppHeader() {
     <header className={`${Style.headerContainer}`}>
       <div className={`${Style.header}`}>
         <div className={`${Style.first}`} ref={dropdownRef}>
-          <img src={Logo} className={`${Style.logo}`}></img>
+          <Link to='/'> <img src={Logo} className={`${Style.logo}`}></img></Link>
           <p
             className={`${Style.navbar}`}
             onMouseOver={() => setMenuDropDownOpen(true)}

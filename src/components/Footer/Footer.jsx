@@ -4,6 +4,7 @@ import { ReactComponent as Sber } from "../../images/logos/sber.svg";
 import { ReactComponent as Visa } from "../../images/logos/visa.svg";
 import { ReactComponent as Mir } from "../../images/logos/mir.svg";
 import { ReactComponent as Maestro } from "../../images/logos/maestro.svg";
+import {Link} from 'react-router-dom';
 import Menu from "../Menu/Menu";
 
 function Footer() {
@@ -19,12 +20,12 @@ function Footer() {
             125008, Москва, Михалковская 8 к.2 ИНН 550201247998
           </p>
           <div className={Style.userAgreement}>
-            <a href="/" className={`${Style.link}`}>
+            <Link to="/license-agreement" className={`${Style.link}`}>
               Пользовательское соглашение
-            </a>
-            <a href="/" className={`${Style.link}`}>
+            </Link>
+            <Link to="/privacy-policy" className={`${Style.link}`}>
               Политика оплаты и возврата
-            </a>
+            </Link>
           </div>
 
           <div className={`${Style.sberContent}`}>
