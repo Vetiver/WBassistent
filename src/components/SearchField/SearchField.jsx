@@ -8,7 +8,7 @@ function SearchField() {
         Поиск товара <span className={styles.span}>по артикулу</span>
       </h1>
       <form className={styles.form} action="submit">
-        <label className={styles.label} for="search-input">
+        <label className={styles.label}>
           <img className={styles.logo} src={MagnifyingGlass} alt="Лупа" />
           <input
             className={styles.input}
