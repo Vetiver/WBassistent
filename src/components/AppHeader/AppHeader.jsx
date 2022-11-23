@@ -1,5 +1,6 @@
 import React from "react";
 import Style from "../AppHeader/AppHeader.module.css";
+import Logo  from "../../images/logos/WB.png";
 import { ReactComponent as ProfileLogo } from "../../images/logos/profile.svg";
 import { ReactComponent as QuestionLogo } from "../../images/logos/question.svg";
 import { useState, useRef } from "react";
@@ -20,7 +21,7 @@ function AppHeader() {
     <header className={`${Style.headerContainer}`}>
       <div className={`${Style.header}`}>
         <div className={`${Style.first}`} ref={dropdownRef}>
-          <p className={`${Style.logo}`}>LOGO</p>
+          <img src={Logo} className={`${Style.logo}`}></img>
           <p
             className={`${Style.navbar}`}
             onMouseOver={() => setMenuDropDownOpen(true)}
