@@ -1,4 +1,5 @@
 @import './vendors/fonts/fonts.css';
+@import '@splidejs/react-splide/css';
 
 body {
   margin: 0;

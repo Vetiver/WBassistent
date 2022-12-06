@@ -1,5 +1,6 @@
 import styles from "./SearchField.module.css";
 import MagnifyingGlass from "../../images/logos/magnifying-glass.svg";
+import SubmitButton from "../SubmitButton/submit-button";
 
 function SearchField() {
   return (
@@ -16,9 +17,7 @@ function SearchField() {
             placeholder="Введите артикул товара"
           />
         </label>
-        <button className={styles.submitButton} type="submit">
-          Проверить
-        </button>
+        <SubmitButton content="Проверить" />
       </form>
     </div>
   );
