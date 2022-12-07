@@ -5,6 +5,7 @@ import { Homepage, Login } from "../../pages/all-pages";
 import Footer from "../Footer/Footer";
 import LicenseAgreement from "../../pages/LicenseAgreement/LicenseAgreement.jsx";
 import PrivacyPolicy from "../../pages/PrivacyPolicy/PrivacyPolicy.jsx";
+import RegisterPage from "../../pages/RegisterPage/register-page";
 
 function App() {
   return (
@@ -12,11 +13,14 @@ function App() {
       <AppHeader />
       <main className={Style.main}>
         <Switch>
-          {/* <Route path="/" exact={true}>
-            <Homepage />
-          </Route> */}
           <Route path="/" exact={true}>
+            <Homepage />
+          </Route>
+          <Route path="/login" exact={true}>
             <Login />
+          </Route>
+          <Route path="/register" exact={true}>
+            <RegisterPage />
           </Route>
           <Route path="/license-agreement" exact={true}>
             <LicenseAgreement />

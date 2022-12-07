@@ -39,9 +39,9 @@ function AppHeader() {
           <a className={`${Style.link}`} href="./#">
             <QuestionLogo className={`${Style.icon}`} />
           </a>
-          <a className={`${Style.link}`} href="./#">
+          <Link className={`${Style.link}`} to="/login">
             <ProfileLogo className={`${Style.icon}`} />
-          </a>
+          </Link>
         </div>
       </div>
     </header>

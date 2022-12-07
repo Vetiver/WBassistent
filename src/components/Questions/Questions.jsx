@@ -26,7 +26,7 @@ function Questions() {
             <h4 className={`${Style.question}`}>{item.title}</h4>
             <p
               className={
-                selected == i ? `${Style.answerActive}` : `${Style.answer}`
+                selected === i ? `${Style.answerActive}` : `${Style.answer}`
               }
             >
               {item.answer}
