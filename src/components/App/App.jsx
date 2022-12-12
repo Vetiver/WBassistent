@@ -6,6 +6,7 @@ import Footer from "../Footer/Footer";
 import LicenseAgreement from "../../pages/LicenseAgreement/LicenseAgreement.jsx";
 import PrivacyPolicy from "../../pages/PrivacyPolicy/PrivacyPolicy.jsx";
 import RegisterPage from "../../pages/RegisterPage/register-page";
+import Profile from "../../pages/Profile/Profile.jsx";
 
 function App() {
   return (
@@ -21,6 +22,9 @@ function App() {
           </Route>
           <Route path="/register" exact={true}>
             <RegisterPage />
+          </Route>
+          <Route path="/profile" exact={true}>
+            <Profile />
           </Route>
           <Route path="/license-agreement" exact={true}>
             <LicenseAgreement />
