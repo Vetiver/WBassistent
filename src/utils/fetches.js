@@ -1,4 +1,5 @@
 import { baseUrl, checkResponse } from "./constants/api-constants";
+import { getCookie } from "./cookie";
 
 export const fetchRegister = (form) => {
   const requestOptions = {
@@ -14,9 +15,7 @@ export const fetchRegister = (form) => {
     body: JSON.stringify(form),
   };
 
-  return fetch(`//${baseUrl}/register/`, requestOptions).then(
-    checkResponse
-  );
+  return fetch(`//${baseUrl}/register/`, requestOptions).then(checkResponse);
 };
 
 export const fetchLogin = (form) => {
@@ -34,4 +33,23 @@ export const fetchLogin = (form) => {
   };
 
   return fetch(`//${baseUrl}/login/`, requestOptions).then(checkResponse);
+};
+
+export const fetchUserData = () => {
+  const requestOptions = {
+    method: "POST",
+    mode: "cors",
+    cache: "no-cache",
+    credentials: "same-origin",
+    redirect: "follow",
+    referrerPolicy: "no-referrer",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({access: getCookie("token")}),
+  };
+
+  return fetch(`//${baseUrl}/token/get_data/`, requestOptions).then(
+    checkResponse
+  );
 };

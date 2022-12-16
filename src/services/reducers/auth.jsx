@@ -31,11 +31,12 @@ export const authReducer = (state = initialState, action) => {
         ...state,
         isLoading: false,
         hasError: false,
-        userInfo: {
-          email: action.payload.email,
-          first_name: action.payload.first_name,
-          last_name: action.payload.last_name,
-        },
+        userInfo: action.payload,
+        // userInfo: {
+        //   // email: action.payload.email,
+        //   // first_name: action.payload.first_name,
+        //   // last_name: action.payload.last_name,
+        // },
       };
     }
     case FETCH_AUTH_ERROR: {

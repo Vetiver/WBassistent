@@ -1,4 +1,4 @@
-import { fetchLogin, fetchRegister } from "../../utils/fetches";
+import { fetchLogin, fetchRegister, fetchUserData } from "../../utils/fetches";
 import {
   FETCH_AUTH_ERROR,
   FETCH_AUTH_REQUEST,
@@ -10,7 +10,7 @@ import { setCookie } from "../../utils/cookie";
 // регистрация
 export function setRegister(form) {
   return function (dispatch) {
-    dispatch({ type: FETCH_AUTH_REQUEST });
+    dispatch({ type: FETCH_AUTH_REQUEST }); 
     fetchRegister(form)
       .then((res) => {
         if (res) {
@@ -20,7 +20,7 @@ export function setRegister(form) {
           });
           dispatch({ type: SET_LOGIN_STATUS });
           const authToken = res.access;
-          const refreshToken = res.refresh;
+          const refreshToken = res.refresh;// работать дима работать!! arbeiten! schnelle schnelle!!
           setCookie("token", authToken, {});
           localStorage.setItem("refreshToken", refreshToken);
         } else {
@@ -41,7 +41,7 @@ export function authenticateUser(form) {
     dispatch({ type: FETCH_AUTH_REQUEST });
     fetchLogin(form)
       .then((res) => {
-        if (res && res.success) {
+        if (res) {
           dispatch({
             type: FETCH_AUTH_SUCCESS,
             payload: res,
@@ -62,5 +62,25 @@ export function authenticateUser(form) {
           type: FETCH_AUTH_ERROR,
         })
       );
+  };
+}
+
+// получение данных юзера
+export function getData() {
+  return function (dispatch) {
+    dispatch({ type: FETCH_AUTH_REQUEST });
+    fetchUserData()
+      .then((res) => {
+        if (res) {
+          dispatch({
+            type: FETCH_AUTH_SUCCESS,
+            payload: res,
+          });
+          dispatch({ type: SET_LOGIN_STATUS });
+        }
+      })
+      .catch(() => {
+        // dispatch(refreshAccessToken());
+      });
   };
 }

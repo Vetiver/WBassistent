@@ -1,4 +1,6 @@
 import Style from "../../components/App/App.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
 import AppHeader from "../../components/AppHeader/AppHeader.jsx";
 import { Switch, Route } from "react-router-dom";
 import { Homepage, Login } from "../../pages/all-pages";
@@ -7,8 +9,16 @@ import LicenseAgreement from "../../pages/LicenseAgreement/LicenseAgreement.jsx"
 import PrivacyPolicy from "../../pages/PrivacyPolicy/PrivacyPolicy.jsx";
 import RegisterPage from "../../pages/RegisterPage/register-page";
 import Profile from "../../pages/Profile/Profile.jsx";
+import { ProtectedRoute } from "../../services/ProtectedRoute/ProtectedRoute";
 
 function App() {
+  const isLogin = useSelector((state) => state.authReducer.isLogin);
+  const dispatch = useDispatch();
+  // useEffect(() => {
+  //   if(document.cookie !== '') {
+  //     dispatch(fetchUserInf());
+  //   }
+  // }, []);
   return (
     <div className={`${Style.App}`}>
       <AppHeader />
@@ -17,15 +27,15 @@ function App() {
           <Route path="/" exact={true}>
             <Homepage />
           </Route>
-          <Route path="/login" exact={true}>
+          <ProtectedRoute anonymous={true} path="/login" exact={true}>
             <Login />
-          </Route>
-          <Route path="/register" exact={true}>
+          </ProtectedRoute>
+          <ProtectedRoute anonymous={true} path="/register" exact={true}>
             <RegisterPage />
-          </Route>
-          <Route path="/profile" exact={true}>
+          </ProtectedRoute>
+          <ProtectedRoute isAuth={isLogin} path="/profile" exact={true}>
             <Profile />
-          </Route>
+          </ProtectedRoute>
           <Route path="/license-agreement" exact={true}>
             <LicenseAgreement />
           </Route>

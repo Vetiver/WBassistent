@@ -10,10 +10,6 @@
   width: fit-content;
 }
 
-.button:hover {
-  background-position: bottom right;
-}
-
 .large {
   padding: 24px 34px;
   font-size: 24px;
@@ -30,13 +26,11 @@
   color: blue;
 }
 
-.primary {
-  background: linear-gradient(
-    90deg,
-    #ec238d 0%,
-    #bc3d96 38.02%,
-    #8d297f 73.96%,
-    #7d256f 100%
-  );
+.button:hover {
+  background: linear-gradient(90deg, #ec238d 0%, #bc3d96 38.02%, #8d297f 73.96%, #7d256f 100%);
   color: #fff;
+}
+
+.primary:hover {
+  background-position: bottom right;
 }

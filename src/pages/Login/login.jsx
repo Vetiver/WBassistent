@@ -1,10 +1,11 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import Input from "../../components/Input/input";
 import SliderCard from "../../components/SliderCard/slider-card";
 import SubmitButton from "../../components/SubmitButton/submit-button";
-import { authenticateUser } from "../../services/actions.js/auth";
+import { authenticateUser, getData } from "../../services/actions.js/auth";
+import { fetchUserData } from "../../utils/fetches";
 import styles from "./login.module.css";
 
 function Login() {
@@ -17,6 +18,7 @@ function Login() {
 
   const registerUser = (form) => {
     dispatch(authenticateUser(form));
+    dispatch(getData())
   };
 
   const onInputChange = (e) => {
