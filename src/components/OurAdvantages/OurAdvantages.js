@@ -3,7 +3,7 @@ import Styles from "./OurAdvantages.module.css";
 function OurAdvantages() {
   return (
     <section className={Styles.section}>
-      <h2 className={Styles.title}>Главное наши возможности:</h2>
+      <h2 className={Styles.title}>Главные наши возможности:</h2>
       <p className={Styles.content}>
         мы - официальный авторизованный партнер Wildberries. Информация о нас
         размещена в личном кабинете каждого поставщика Wildberries. Подробнее:{" "}

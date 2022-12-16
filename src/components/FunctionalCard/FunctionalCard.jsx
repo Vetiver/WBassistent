@@ -2,9 +2,10 @@ import Styles from "./FunctionalCard.module.css";
 import ArrowRight from "../../images/logos/arrow-right-black.svg";
 import PlayIcon from "../../images/logos/play-icon.svg";
 
-function FunctionalCard({ data }) {
+function FunctionalCard({ data, component }) {
+  const CustomTag = component === "slider" ? "div" : "li";
   return (
-    <li className={Styles.container}>
+    <CustomTag className={`${Styles.container} splide__slide ${CustomTag === 'div' ? Styles.slider : ''}`}>
       <h3 className={Styles.title}>{data.title}</h3>
       <p className={Styles.content}>{data.content}</p>
       <div className={Styles.linksContainer}>
@@ -32,7 +33,7 @@ function FunctionalCard({ data }) {
           </a>
         </div>
       </div>
-    </li>
+    </CustomTag>
   );
 }
 
