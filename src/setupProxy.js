@@ -15,4 +15,11 @@ module.exports = function(app) {
       changeOrigin: true,
     })
   );
+  app.use(
+    '/getData',
+    createProxyMiddleware({
+      target: 'http://65.21.240.211:5000',
+      changeOrigin: true,
+    })
+  );
 };
