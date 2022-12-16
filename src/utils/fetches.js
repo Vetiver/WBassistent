@@ -14,7 +14,7 @@ export const fetchRegister = (form) => {
     body: JSON.stringify(form),
   };
 
-  return fetch(`//${baseUrl}/register/`, requestOptions).then(
+  return fetch(`/register/`, requestOptions).then(
     checkResponse
   );
 };
@@ -33,5 +33,5 @@ export const fetchLogin = (form) => {
     body: JSON.stringify(form),
   };
 
-  return fetch(`//${baseUrl}/login/`, requestOptions).then(checkResponse);
+  return fetch(`/login/`, requestOptions).then(checkResponse);
 };
