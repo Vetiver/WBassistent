@@ -1,8 +1,5 @@
 import { Route } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
 import { Redirect, useLocation } from "react-router-dom";
-import { getCookie } from "../../utils/cookie.js";
 
 export default function ProtectedRoute({
   anonymous = false,

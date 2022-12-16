@@ -18,7 +18,7 @@ export const authReducer = (state = initialState, action) => {
         ...state,
         isLoading: true,
         hasError: false,
-        isLogin: false
+        isLogin: false,
       };
     }
     case FETCH_AUTH_SUCCESS: {
@@ -26,7 +26,7 @@ export const authReducer = (state = initialState, action) => {
         ...state,
         isLoading: false,
         hasError: false,
-        isLogin: true
+        isLogin: true,
       };
     }
 
@@ -35,7 +35,7 @@ export const authReducer = (state = initialState, action) => {
         ...state,
         isLoading: false,
         hasError: true,
-        isLogin: false
+        isLogin: false,
       };
     }
 

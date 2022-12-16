@@ -10,10 +10,18 @@ import PrivacyPolicy from "../../pages/PrivacyPolicy/PrivacyPolicy.jsx";
 import RegisterPage from "../../pages/RegisterPage/register-page";
 import Profile from "../../pages/Profile/Profile.jsx";
 import ProtectedRoute from "../../services/ProtectedRoute/ProtectedRoute";
+import { fetchUserData } from "../../utils/fetches";
 
 function App() {
   const isLogin = useSelector((state) => state.authReducer.isLogin);
   const dispatch = useDispatch();
+
+  // useEffect(() => {
+  //   if (document.cookie.token !== "") {
+  //     dispatch(fetchUserData());
+  //   }
+  // }, []);
+
   return (
     <div className={`${Style.App}`}>
       <AppHeader />
@@ -28,7 +36,12 @@ function App() {
           <ProtectedRoute anonymous={true} path="/register" exact={true}>
             <RegisterPage />
           </ProtectedRoute>
-          <ProtectedRoute isAuth={isLogin} anonymous={false} path="/profile" exact={true}>
+          <ProtectedRoute
+            isAuth={isLogin}
+            anonymous={false}
+            path="/profile"
+            exact={true}
+          >
             <Profile />
           </ProtectedRoute>
           <Route path="/license-agreement" exact={true}>

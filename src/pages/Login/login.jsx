@@ -18,7 +18,7 @@ function Login() {
     password: "",
   });
 
-  const registerUser = (form) => {
+  const loginUser = (form) => {
     dispatch(authenticateUser(form));
     dispatch(getData());
   };
@@ -30,7 +30,7 @@ function Login() {
   const push = useCallback(
     (e) => {
       e.preventDefault();
-      registerUser(formState);
+      loginUser(formState);
       console.log(formState);
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps

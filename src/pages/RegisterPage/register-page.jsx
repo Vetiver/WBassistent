@@ -1,14 +1,16 @@
 import { useCallback, useState } from "react";
-import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, useLocation, Redirect, useHistory } from "react-router-dom";
 import Input from "../../components/Input/input";
 import SliderCard from "../../components/SliderCard/slider-card";
 import SubmitButton from "../../components/SubmitButton/submit-button";
-import { setRegister } from "../../services/actions.js/auth";
+import { getData, setRegister } from "../../services/actions.js/auth";
 import styles from "./register-page.module.css";
 
 function RegisterPage() {
   const dispatch = useDispatch();
+  const history = useHistory();
+  const isLogin = useSelector((state) => state.authReducer.isLogin);
 
   const [formState, setFormState] = useState({
     email: "",
@@ -19,6 +21,7 @@ function RegisterPage() {
 
   const registerUser = (form) => {
     dispatch(setRegister(form));
+    dispatch(getData());
   };
 
   const onInputChange = (e) => {
@@ -29,7 +32,9 @@ function RegisterPage() {
     (e) => {
       e.preventDefault();
       registerUser(formState);
-      console.log(formState)
+      if (isLogin) {
+        history.push("/profile");
+      }
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [formState]
