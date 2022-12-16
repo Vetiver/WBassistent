@@ -4,23 +4,23 @@ import { useEffect } from "react";
 import { Redirect, useLocation } from "react-router-dom";
 import { getCookie } from "../../utils/cookie.js";
 
-export function ProtectedRoute({
+export default function ProtectedRoute({
   anonymous = false,
   isAuth,
   children,
+  path,
   ...rest
 }) {
-  const dispatch = useDispatch();
-
   const location = useLocation();
+
   if (anonymous && isAuth) {
-    return <Redirect to={location?.state?.from || "/"} />;
+    return <Redirect to="/" />;
   }
 
   if (!anonymous && !isAuth) {
-    // ...то отправляем его, например, на форму входа
     return <Redirect to={{ pathname: "/login", state: { from: location } }} />;
   }
 
-  return <Route {...rest}>{children}</Route>;
+  return <Route exact={true} {...rest}>{children}</Route>;
 }
+

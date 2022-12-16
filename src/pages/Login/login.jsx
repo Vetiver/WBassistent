@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, Redirect, useLocation } from "react-router-dom";
 import Input from "../../components/Input/input";
 import SliderCard from "../../components/SliderCard/slider-card";
 import SubmitButton from "../../components/SubmitButton/submit-button";
@@ -10,6 +10,8 @@ import styles from "./login.module.css";
 
 function Login() {
   const dispatch = useDispatch();
+  const isLogin = useSelector((state) => state.authReducer.isLogin);
+  const location = useLocation();
 
   const [formState, setFormState] = useState({
     email: "",
@@ -18,7 +20,7 @@ function Login() {
 
   const registerUser = (form) => {
     dispatch(authenticateUser(form));
-    dispatch(getData())
+    dispatch(getData());
   };
 
   const onInputChange = (e) => {
@@ -34,6 +36,17 @@ function Login() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [formState]
   );
+
+  if (isLogin) {
+    return (
+      <Redirect
+        to={{
+          pathname: "/profile",
+          state: { from: location },
+        }}
+      />
+    );
+  }
 
   return (
     <section className={styles.section}>
@@ -51,14 +64,14 @@ function Login() {
               placeholder="E-mail"
               size="medium"
               type="email"
-              name='email'
+              name="email"
               onChange={onInputChange}
             />
             <Input
               placeholder="Пароль"
               size="medium"
               type="password"
-              name='password'
+              name="password"
               onChange={onInputChange}
             />
             <div className={styles.isRegister}>

@@ -3,17 +3,11 @@ import {
   FETCH_AUTH_SUCCESS,
   FETCH_AUTH_ERROR,
   DELETE_USER,
-  SET_LOGIN_STATUS,
 } from "../../utils/constants/auth";
 
 const initialState = {
   isLoading: false,
   hasError: false,
-  userInfo: {
-    email: "",
-    first_name: "",
-    last_name: "",
-  },
   isLogin: false,
 };
 
@@ -24,6 +18,7 @@ export const authReducer = (state = initialState, action) => {
         ...state,
         isLoading: true,
         hasError: false,
+        isLogin: false
       };
     }
     case FETCH_AUTH_SUCCESS: {
@@ -31,19 +26,16 @@ export const authReducer = (state = initialState, action) => {
         ...state,
         isLoading: false,
         hasError: false,
-        userInfo: action.payload,
-        // userInfo: {
-        //   // email: action.payload.email,
-        //   // first_name: action.payload.first_name,
-        //   // last_name: action.payload.last_name,
-        // },
+        isLogin: true
       };
     }
+
     case FETCH_AUTH_ERROR: {
       return {
         ...state,
         isLoading: false,
-        hasError: false,
+        hasError: true,
+        isLogin: false
       };
     }
 
@@ -52,13 +44,6 @@ export const authReducer = (state = initialState, action) => {
         ...state,
         userInfo: initialState.userInfo,
         isLogin: initialState.isLogin,
-      };
-    }
-
-    case SET_LOGIN_STATUS: {
-      return {
-        ...state,
-        isLogin: true,
       };
     }
     default:
