@@ -14,10 +14,8 @@ export const fetchRegister = (form) => {
     referrerPolicy: "no-referrer",
     body: JSON.stringify(form),
   };
-
   return fetch(`//${baseUrl}/register/`, requestOptions).then(checkResponse);
-};
-
+}
 export const fetchLogin = (form) => {
   const requestOptions = {
     method: "POST",
@@ -32,7 +30,7 @@ export const fetchLogin = (form) => {
     body: JSON.stringify(form),
   };
 
-  return fetch(`//${baseUrl}/login/`, requestOptions).then(checkResponse);
+  return fetch(`/login/`, requestOptions).then(checkResponse);
 };
 
 export const fetchUserData = () => {
