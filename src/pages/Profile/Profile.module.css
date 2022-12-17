@@ -8,13 +8,32 @@
     display: flex;
     flex-direction: column;
     gap: 30px;
+    margin-bottom: 30px;
 }
 
 .page {
     display: flex;
+    gap: 100px;
+    margin-top: 30px;
 }
 
 .organization {
     display: flex;
     flex-direction: column;
+    width:600px;
 }
+
+.span {
+    font-size: 1.17em;
+    padding-top: 30px;
+}
+
+.mainForms {
+    display: flex;
+    flex-direction: column;
+}
+
+.buttons {
+    display: flex;
+    gap: 20px
+} 

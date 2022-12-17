@@ -10,17 +10,21 @@ import PrivacyPolicy from "../../pages/PrivacyPolicy/PrivacyPolicy.jsx";
 import RegisterPage from "../../pages/RegisterPage/register-page";
 import Profile from "../../pages/Profile/Profile.jsx";
 import ProtectedRoute from "../../services/ProtectedRoute/ProtectedRoute";
-import { fetchUserData } from "../../utils/fetches";
+import { getData } from "../../services/actions/auth";
 
 function App() {
   const isLogin = useSelector((state) => state.authReducer.isLogin);
   const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   if (document.cookie.token !== "") {
-  //     dispatch(fetchUserData());
-  //   }
-  // }, []);
+  function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+  }
+  useEffect(() => {
+    if (getCookie('token') !== '') {
+      dispatch(getData());
+    }
+  }, []);
 
   return (
     <div className={`${Style.App}`}>

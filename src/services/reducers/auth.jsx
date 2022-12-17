@@ -2,7 +2,7 @@ import {
   FETCH_AUTH_REQUEST,
   FETCH_AUTH_SUCCESS,
   FETCH_AUTH_ERROR,
-  DELETE_USER,
+  LOGOUT_USER,
 } from "../../utils/constants/auth";
 
 const initialState = {
@@ -39,10 +39,9 @@ export const authReducer = (state = initialState, action) => {
       };
     }
 
-    case DELETE_USER: {
+    case LOGOUT_USER: {
       return {
         ...state,
-        userInfo: initialState.userInfo,
         isLogin: initialState.isLogin,
       };
     }

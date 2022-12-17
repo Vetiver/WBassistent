@@ -11,6 +11,28 @@ import {
   FETCH_USER_DATA_SUCCESS,
 } from "../../utils/constants/user-data";
 
+// получение данных юзера
+export function getData() {
+  return function (dispatch) {
+    dispatch({ type: FETCH_USER_DATA_REQUEST });
+    fetchUserData()
+      .then((res) => {
+        dispatch({
+          type: FETCH_AUTH_SUCCESS,
+        });
+        dispatch({
+          type: FETCH_USER_DATA_SUCCESS,
+          payload: res,
+        });
+      })
+      .catch(() => {
+        dispatch({
+          type: FETCH_USER_DATA_ERROR,
+        });
+      });
+  };
+}
+
 // регистрация
 export function setRegister(form) {
   return function (dispatch) {
@@ -25,6 +47,7 @@ export function setRegister(form) {
           const refreshToken = res.refresh;
           setCookie("token", authToken, {});
           localStorage.setItem("refreshToken", refreshToken);
+          getData()
         } else {
           dispatch({ type: FETCH_AUTH_ERROR });
         }
@@ -47,9 +70,13 @@ export function authenticateUser(form) {
           dispatch({
             type: FETCH_AUTH_SUCCESS,
           });
+          dispatch({
+            type: FETCH_USER_DATA_SUCCESS,
+            payload: res
+          });
           const authToken = res.access;
           const refreshToken = res.refresh;
-          setCookie("token", authToken, {});
+          setCookie("token", authToken, { 'max-age': 604800 });
           localStorage.setItem("refreshToken", refreshToken);
         } else {
           dispatch({ type: FETCH_AUTH_ERROR });
@@ -60,24 +87,5 @@ export function authenticateUser(form) {
           type: FETCH_AUTH_ERROR,
         })
       );
-  };
-}
-
-// получение данных юзера
-export function getData() {
-  return function (dispatch) {
-    dispatch({ type: FETCH_USER_DATA_REQUEST });
-    fetchUserData()
-      .then((res) => {
-        dispatch({
-          type: FETCH_USER_DATA_SUCCESS,
-          payload: res,
-        });
-      })
-      .catch(() => {
-        dispatch({
-          type: FETCH_USER_DATA_ERROR,
-        });
-      });
   };
 }

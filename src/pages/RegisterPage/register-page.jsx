@@ -4,7 +4,7 @@ import { Link, useLocation, Redirect, useHistory } from "react-router-dom";
 import Input from "../../components/Input/input";
 import SliderCard from "../../components/SliderCard/slider-card";
 import SubmitButton from "../../components/SubmitButton/submit-button";
-import { getData, setRegister } from "../../services/actions.js/auth";
+import { getData, setRegister } from "../../services/actions/auth";
 import styles from "./register-page.module.css";
 
 function RegisterPage() {

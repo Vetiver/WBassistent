@@ -1,10 +1,10 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, Redirect, useLocation } from "react-router-dom";
 import Input from "../../components/Input/input";
 import SliderCard from "../../components/SliderCard/slider-card";
 import SubmitButton from "../../components/SubmitButton/submit-button";
-import { authenticateUser, getData } from "../../services/actions.js/auth";
+import { authenticateUser, getData } from "../../services/actions/auth";
 import { fetchUserData } from "../../utils/fetches";
 import styles from "./login.module.css";
 
@@ -13,6 +13,12 @@ function Login() {
   const isLogin = useSelector((state) => state.authReducer.isLogin);
   const location = useLocation();
 
+  function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+  }
+
   const [formState, setFormState] = useState({
     email: "",
     password: "",
@@ -20,7 +26,6 @@ function Login() {
 
   const loginUser = (form) => {
     dispatch(authenticateUser(form));
-    dispatch(getData());
   };
 
   const onInputChange = (e) => {
@@ -31,7 +36,6 @@ function Login() {
     (e) => {
       e.preventDefault();
       loginUser(formState);
-      console.log(formState);
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [formState]

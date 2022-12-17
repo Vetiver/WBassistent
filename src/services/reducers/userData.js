@@ -2,18 +2,13 @@ import {
   FETCH_USER_DATA_REQUEST,
   FETCH_USER_DATA_SUCCESS,
   FETCH_USER_DATA_ERROR,
-  DELETE_USER,
+  DELETE_USER_DATA,
 } from "../../utils/constants/user-data";
 
 const initialState = {
   isLoading: false,
   hasError: false,
-  userInfo: {
-    email: "",
-    first_name: "",
-    last_name: "",
-    phone_number: "",
-  },
+  userInfo: null
 };
 
 export const userDataReducer = (state = initialState, action) => {
@@ -32,12 +27,7 @@ export const userDataReducer = (state = initialState, action) => {
         ...state,
         isLoading: false,
         hasError: false,
-        userInfo: {
-          email: action.payload.email,
-          first_name: action.payload.first_name,
-          last_name: action.payload.last_name,
-          phone_number: action.payload.phone_number,
-        },
+        userInfo: action.payload
       };
     }
     case FETCH_USER_DATA_ERROR: {
@@ -49,7 +39,7 @@ export const userDataReducer = (state = initialState, action) => {
       };
     }
 
-    case DELETE_USER: {
+    case DELETE_USER_DATA: {
       return {
         ...state,
         userInfo: initialState.userInfo,

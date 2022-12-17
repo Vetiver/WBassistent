@@ -1,9 +1,16 @@
+import React, { useCallback, useState, useEffect } from "react";
 import styles from "./Profile.module.css";
-import { useState } from "react";
 import Input from "../../components/Input/input";
 import SubmitButton from "../../components/SubmitButton/submit-button";
+import { useDispatch, useSelector } from "react-redux";
+import {deleteCookie} from '../../utils/cookie';
+import {LOGOUT_USER} from '../../utils/constants/auth';
+import {DELETE_USER_DATA} from '../../utils/constants/user-data';
 
 function Profile() {
+  const dispatch = useDispatch();
+  const userInfo = useSelector((state) => state.userDataReducer.userInfo);
+  console.log(userInfo)
   const [formState, setFormState] = useState({
     email: "",
     password: "",
@@ -13,28 +20,55 @@ function Profile() {
   const onInputChange = (e) => {
     setFormState({ ...formState, [e.target.name]: e.target.value });
   };
+
+  const logoutFromAccount = () => { 
+    dispatch({type: LOGOUT_USER })
+    dispatch({type: DELETE_USER_DATA })
+    localStorage.removeItem("refreshToken");
+    deleteCookie("token");
+  }
+
+  const tryLogout = useCallback((e) => {
+    logoutFromAccount();
+    e.preventDefault();
+  }, []);
+
+  useEffect(() => {
+    if(userInfo !== null) {
+      setFormState({
+        ...formState,
+        email: userInfo.email,
+        first_name: userInfo.first_name,
+      });
+    }
+  }, [userInfo]);
+  
   return (
+    !!formState && (
     <section>
       <div className={styles.page}>
-        <div>
+        <div className={styles.mainForms}>
           <form className={styles.form} onSubmit={"push"}>
             <h2>Настройки</h2>
             <Input
-              placeholder="Название"
+              placeholder={formState.first_name}
               size="medium"
               type="text"
               name={"first_name"}
               onChange={onInputChange}
             />
             <Input
-              placeholder="E-mail"
+              placeholder={formState.email}
               size="medium"
               type="email"
               name={"email"}
               onChange={onInputChange}
               required={true}
             />
+            <div className={styles.buttons}>
             <SubmitButton content="Сохранить"></SubmitButton>
+            <SubmitButton onClick={tryLogout} content="Выход"></SubmitButton>
+            </div>
           </form>
           <form className={styles.form} onSubmit={"push"}>
             <h2>Wildberries</h2>
@@ -67,7 +101,7 @@ function Profile() {
         </div>
         <div className={styles.organization}>
           <form className={styles.page} action="">
-            <span>Поделиться:</span>
+            <span className={styles.span}>Поделиться:</span>
             <Input
               placeholder="Cсылка"
               size="medium"
@@ -80,6 +114,7 @@ function Profile() {
         </div>
       </div>
     </section>
+    )
   );
 }
 
