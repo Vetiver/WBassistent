@@ -25,6 +25,7 @@ function App() {
       dispatch(getData());
     }
   }, []);
+  console.log(getCookie('token'))
 
   return (
     <div className={`${Style.App}`}>

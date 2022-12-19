@@ -11,7 +11,7 @@ function RegisterPage() {
   const dispatch = useDispatch();
   const history = useHistory();
   const isLogin = useSelector((state) => state.authReducer.isLogin);
-
+  const hasError = useSelector((state) => state.authReducer.hasError);
   const [formState, setFormState] = useState({
     email: "",
     password: "",
@@ -21,7 +21,6 @@ function RegisterPage() {
 
   const registerUser = (form) => {
     dispatch(setRegister(form));
-    dispatch(getData());
   };
 
   const onInputChange = (e) => {
@@ -32,9 +31,9 @@ function RegisterPage() {
     (e) => {
       e.preventDefault();
       registerUser(formState);
-      if (isLogin) {
+      setTimeout(() => {if (hasError === false) {
         history.push("/profile");
-      }
+      }}, (1000))
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [formState]
@@ -82,11 +81,19 @@ function RegisterPage() {
                 Авторизоваться
               </Link>
             </div>
+            {hasError ?
             <SubmitButton
               type="primary"
               size="medium"
-              content="Зарегистрироваться"
+              content="Ошибка при регистрации"
             />
+            :
+            <SubmitButton
+            type="primary"
+            size="medium"
+            content="Зарегистрироваться"
+          />}
+           
           </form>
           <SliderCard className={styles.splide} />
         </div>

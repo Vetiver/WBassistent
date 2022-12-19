@@ -3,6 +3,7 @@ import {
   FETCH_AUTH_SUCCESS,
   FETCH_AUTH_ERROR,
   LOGOUT_USER,
+  NO_ERROR
 } from "../../utils/constants/auth";
 
 const initialState = {
@@ -19,6 +20,12 @@ export const authReducer = (state = initialState, action) => {
         isLoading: true,
         hasError: false,
         isLogin: false,
+      };
+    }
+    case NO_ERROR: {
+      return {
+        ...state,
+        hasError: false,
       };
     }
     case FETCH_AUTH_SUCCESS: {

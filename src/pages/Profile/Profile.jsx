@@ -10,7 +10,6 @@ import {DELETE_USER_DATA} from '../../utils/constants/user-data';
 function Profile() {
   const dispatch = useDispatch();
   const userInfo = useSelector((state) => state.userDataReducer.userInfo);
-  console.log(userInfo)
   const [formState, setFormState] = useState({
     email: "",
     password: "",

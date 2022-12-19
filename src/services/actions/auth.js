@@ -3,6 +3,8 @@ import {
   FETCH_AUTH_ERROR,
   FETCH_AUTH_REQUEST,
   FETCH_AUTH_SUCCESS,
+  NO_ERROR
+  
 } from "../../utils/constants/auth";
 import { setCookie } from "../../utils/cookie";
 import {
@@ -40,14 +42,11 @@ export function setRegister(form) {
     fetchRegister(form)
       .then((res) => {
         if (res) {
-          dispatch({
-            type: FETCH_AUTH_SUCCESS,
-          });
+          dispatch({ type: NO_ERROR });
           const authToken = res.access;
           const refreshToken = res.refresh;
           setCookie("token", authToken, {});
           localStorage.setItem("refreshToken", refreshToken);
-          getData()
         } else {
           dispatch({ type: FETCH_AUTH_ERROR });
         }
