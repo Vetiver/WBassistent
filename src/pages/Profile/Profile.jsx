@@ -7,9 +7,12 @@ import {deleteCookie} from '../../utils/cookie';
 import {LOGOUT_USER} from '../../utils/constants/auth';
 import {DELETE_USER_DATA} from '../../utils/constants/user-data';
 
+
 function Profile() {
   const dispatch = useDispatch();
   const userInfo = useSelector((state) => state.userDataReducer.userInfo);
+  const isLogin = useSelector((state) => state.authReducer.isLogin);
+  console.log(isLogin)
   const [formState, setFormState] = useState({
     email: "",
     password: "",
@@ -21,7 +24,7 @@ function Profile() {
   };
 
   const logoutFromAccount = () => { 
-    dispatch({type: LOGOUT_USER })
+    window.location.reload();
     dispatch({type: DELETE_USER_DATA })
     localStorage.removeItem("refreshToken");
     deleteCookie("token");

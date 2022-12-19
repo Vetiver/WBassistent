@@ -21,11 +21,10 @@ function App() {
     if (parts.length === 2) return parts.pop().split(';').shift();
   }
   useEffect(() => {
-    if (getCookie('token') !== '') {
+    if (getCookie('token') !== undefined) {
       dispatch(getData());
     }
   }, []);
-  console.log(getCookie('token'))
 
   return (
     <div className={`${Style.App}`}>
@@ -47,7 +46,7 @@ function App() {
             path="/profile"
             exact={true}
           >
-            <Profile />
+          <Profile />
           </ProtectedRoute>
           <Route path="/license-agreement" exact={true}>
             <LicenseAgreement />
